@@ -20,3 +20,18 @@ body {
     height: 28px;
     line-height: 25px;
 }
+.fade {
+    opacity: 0;
+}
+.fade-enter-done {
+    opacity: 1
+}
+.fade-enter {
+    opacity: 0
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit-done {
+    opacity: 0;
+}

@@ -4,20 +4,24 @@ class Sayfor extends React.Component {
         this.state = {
             cowsay: "",
             fortune: "",
+            inst: false,
         };
 
         // This binding is necessary to make `this` work in the callback
         this.say = this.say.bind(this);
         this.toJaUrl = this.toJaUrl.bind(this);
         this.makeTwButton = this.makeTwButton.bind(this);
+        this.testinst = this.testinst.bind(this);
     }
 
     say() {
         const self = this;
+        this.setState({ inst: false });
         ky.default("/api/say").json().then((res) => {
             console.log(res);
             self.setState(res);
             self.makeTwButton();
+            this.setState({ inst: true });
         });
     }
 
@@ -52,6 +56,23 @@ class Sayfor extends React.Component {
         const url = `${base}?q=${enc}`;
         return url;
     }
+    testinst() {
+        console.log(this.state.inst);
+        const nxt = !this.state.inst;
+        this.setState({ inst: nxt });
+    }
+    statecss(state) {
+        let ret = "";
+        switch (state) {
+            case "enter":
+                ret = "op1";
+                break;
+            case "exit":
+                ret = "op0";
+                break
+        }
+        return ret;
+    }
 
     render() {
         return (
@@ -60,24 +81,42 @@ class Sayfor extends React.Component {
                     say!
                 </button>
 
-                <pre id="cowsay">
-                    {this.state.cowsay}
-                </pre>
+                <ReactTransitionGroup.CSSTransition
+                    in={this.state.inst}
+                    timeout={300}
+                    classNames="fade"
+                >
+                    <span className="fade">hogehoge</span>
+                </ReactTransitionGroup.CSSTransition>
+                <button onClick={this.testinst}>
+                    click
+                </button>
+                <ReactTransitionGroup.CSSTransition
+                    in={this.state.inst}
+                    timeout={1000}
+                    classNames="fade"
+                >
+                    <div className="fade">
+                        <pre id="cowsay">
+                            {this.state.cowsay}
+                        </pre>
 
-                <div class="flrow">
-                    <div class="flitem">
-                        {this.state.fortune !== ""
-                            && <a id="toja" target="_blank" href={this.toJaUrl()} class="button button-outline sametwbutton">to Ja</a>}
+                        <div className="flrow">
+                            <div className="flitem">
+                                {this.state.fortune !== ""
+                                    && <a id="toja" target="_blank" href={this.toJaUrl()} className="button button-outline sametwbutton">to Ja</a>}
+                            </div>
+                            <div className="flitem">
+                                {this.state.fortune !== ""
+                                    && <a id="toggl" target="_blank" href={this.toGglUrl()} className="button button-outline sametwbutton">to Ggl</a>}
+                            </div>
+                            <div className="flitem">
+                                <span id="twbutton"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flitem">
-                        {this.state.fortune !== ""
-                            && <a id="toggl" target="_blank" href={this.toGglUrl()} class="button button-outline sametwbutton">to Ggl</a>}
-                    </div>
-                    <div class="flitem">
-                        <span id="twbutton"></span>
-                    </div>
-                </div>
-            </div>
+                </ReactTransitionGroup.CSSTransition>
+            </div >
         );
     }
 }
