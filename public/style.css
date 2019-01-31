@@ -1,0 +1,22 @@
+#cowsay {
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 15px;
+    background: rgb(0,	68,	11);
+    color: white;
+}
+#main {
+    padding-top: 5px;
+}
+body {
+    background: black;
+}
+.flrow {
+    display: flex;
+}
+.flitem {
+    padding: 0 5px;
+}
+#toja {
+    height: 28px;
+    line-height: 25px;
+}

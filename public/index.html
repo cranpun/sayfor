@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>SayFor</title>
+    <link rel="shortcut icon" href="https://hp.cranpun-tools.ml/wp-content/uploads/favicon_trans.ico" />
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
+    <meta charset="utf-8">
+
+    <!-- seo -->
+    <meta name="description" content="Let's cow say fortune!" />
+    <meta property="og:url" content="https://sayfor.cranpun-tools.ml" />
+    <meta property="og:title" content="SayFor" />
+    <meta property="og:description" content="Let's cow say fortune!" />
+    <meta property="og:image" content="https://hp.cranpun-tools.ml/wp-content/uploads/favicon_trans.ico" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SayFor" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="app" />
+    <meta name="twitter:site" content="@cranpun" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <!-- react -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+    <!-- ky -->
+    <script src="https://cdn.jsdelivr.net/npm/ky@0.7.1/umd.js"></script>
+
+    <!-- milligram -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+    <!-- twitter -->
+    <script>window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
+    <!-- my -->
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/babel" src="./front.js"></script>
+</head>
+
+<body>
+    <main id="main" class="container">
+        <h1>SayFor</h1>
+        <p>
+            This is fortune & cowsay (unix command) on web.
+        </p>
+        <div id="sayfor">
+
+        </div>
+    </main>
+</body>
+
+</html>

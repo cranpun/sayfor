@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  sayfor:
+    build: .
+    image: cranpun/sayfor
+    container_name: sayfor
+    ports:
+      - '80:80'
