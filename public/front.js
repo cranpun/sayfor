@@ -46,6 +46,12 @@ class Sayfor extends React.Component {
         const url = `${base}?sl=en&tl=ja&text=${enc}`;
         return url;
     }
+    toGglUrl() {
+        const enc = encodeURI(this.state.fortune);
+        const base = "https://www.google.com/search";
+        const url = `${base}?q=${enc}`;
+        return url;
+    }
 
     render() {
         return (
@@ -61,7 +67,11 @@ class Sayfor extends React.Component {
                 <div class="flrow">
                     <div class="flitem">
                         {this.state.fortune !== ""
-                            && <a id="toja" target="_blank" href={this.toJaUrl()} class="button button-outline">to Ja</a>}
+                            && <a id="toja" target="_blank" href={this.toJaUrl()} class="button button-outline sametwbutton">to Ja</a>}
+                    </div>
+                    <div class="flitem">
+                        {this.state.fortune !== ""
+                            && <a id="toggl" target="_blank" href={this.toGglUrl()} class="button button-outline sametwbutton">to Ggl</a>}
                     </div>
                     <div class="flitem">
                         <span id="twbutton"></span>
