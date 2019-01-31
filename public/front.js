@@ -17,12 +17,13 @@ class Sayfor extends React.Component {
     say() {
         const self = this;
         this.setState({ inst: false });
-        ky.default("/api/say").json().then((res) => {
-            console.log(res);
-            self.setState(res);
-            self.makeTwButton();
-            this.setState({ inst: true });
-        });
+        setTimeout(() => {
+            ky.default("/api/say").json().then((res) => {
+                self.setState(res);
+                self.makeTwButton();
+                this.setState({ inst: true });
+            });
+        }, 500);
     }
 
     makeTwButton() {
@@ -83,17 +84,10 @@ class Sayfor extends React.Component {
 
                 <ReactTransitionGroup.CSSTransition
                     in={this.state.inst}
-                    timeout={300}
-                    classNames="fade"
-                >
-                    <span className="fade">hogehoge</span>
-                </ReactTransitionGroup.CSSTransition>
-                <button onClick={this.testinst}>
-                    click
-                </button>
-                <ReactTransitionGroup.CSSTransition
-                    in={this.state.inst}
-                    timeout={1000}
+                    timeout={{
+                        enter: 0,
+                        exit: 6000,
+                    }}
                     classNames="fade"
                 >
                     <div className="fade">
