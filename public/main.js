@@ -1,6 +1,7 @@
-class Sayfor extends React.Component {
+class SayforMain extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             cowsay: "",
             fortune: "",
@@ -11,19 +12,24 @@ class Sayfor extends React.Component {
         this.say = this.say.bind(this);
         this.toJaUrl = this.toJaUrl.bind(this);
         this.makeTwButton = this.makeTwButton.bind(this);
-        this.testinst = this.testinst.bind(this);
+
+        this.loadLastUpdated();
     }
 
     say() {
-        const self = this;
         this.setState({ inst: false });
         setTimeout(() => {
             ky.default("/api/say").json().then((res) => {
-                self.setState(res);
-                self.makeTwButton();
+                this.setState(res);
+                this.makeTwButton();
                 this.setState({ inst: true });
             });
         }, 500);
+    }
+    loadLastUpdated() {
+        ky.default("/api/lastupdated").json().then((res) => {
+            this.setState(res);
+        });
     }
 
     makeTwButton() {
@@ -57,27 +63,9 @@ class Sayfor extends React.Component {
         const url = `${base}?q=${enc}`;
         return url;
     }
-    testinst() {
-        console.log(this.state.inst);
-        const nxt = !this.state.inst;
-        this.setState({ inst: nxt });
-    }
-    statecss(state) {
-        let ret = "";
-        switch (state) {
-            case "enter":
-                ret = "op1";
-                break;
-            case "exit":
-                ret = "op0";
-                break
-        }
-        return ret;
-    }
-
     render() {
         return (
-            <div id="wrap">
+            <div id="wrap_main">
                 <button type="button" id="say" onClick={this.say}>
                     say!
                 </button>
@@ -116,6 +104,6 @@ class Sayfor extends React.Component {
 }
 
 ReactDOM.render(
-    <Sayfor />,
-    document.querySelector('#sayfor')
+    <SayforMain />,
+    document.querySelector('#main_content')
 );
