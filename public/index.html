@@ -3,7 +3,7 @@
 
 <head>
     <title>SayFor</title>
-    <link rel="shortcut icon" href="https://hp.cranpun-tools.ml/wp-content/uploads/favicon_trans.ico" />
+    <link rel="shortcut icon" href="/favicon.png" />
     <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
     <meta charset="utf-8">
 
@@ -23,8 +23,15 @@
         crossorigin="anonymous"></script>
 
     <!-- react -->
+    <!-- dev
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    -->
+    <!-- prod -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <!-- -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-transition-group/2.5.3/react-transition-group.js"></script>
 
@@ -62,17 +69,12 @@
 <body>
     <header id="header">
         <div id="header_content" class="container">
-            <div class="flrow">
-                <div class="flitem">
-                    <h1>SayFor</h1>
-                </div>
-                <div class="flitem">
-                    <span>
-                        This is fortune & cowsay (unix command) on web.
-                    </span>
-
-                </div>
-            </div>
+            <span>
+                cowsay &amp; fortune (unix) on web.
+            </span>
+            <h1 class="text-center">
+                <img src="./logo_transparent.png" alt="SayFor" style="width: 300px; max-width: 100%;">
+            </h1>
         </div>
     </header>
     <main id="main">

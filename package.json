@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "npx nodemon src/app.js",
-    "prod": "docker-compose stop; docker-compose build;"
+    "prod": "docker-compose stop; docker-compose build;",
+    "dkpush": "docker push cranpun/sayfor:latest"
   },
   "keywords": [],
   "author": "",

@@ -12,8 +12,6 @@ class SayforMain extends React.Component {
         this.say = this.say.bind(this);
         this.toJaUrl = this.toJaUrl.bind(this);
         this.makeTwButton = this.makeTwButton.bind(this);
-
-        this.loadLastUpdated();
     }
 
     say() {
@@ -25,11 +23,6 @@ class SayforMain extends React.Component {
                 this.setState({ inst: true });
             });
         }, 500);
-    }
-    loadLastUpdated() {
-        ky.default("/api/lastupdated").json().then((res) => {
-            this.setState(res);
-        });
     }
 
     makeTwButton() {
@@ -66,9 +59,11 @@ class SayforMain extends React.Component {
     render() {
         return (
             <div id="wrap_main">
-                <button type="button" id="say" onClick={this.say}>
-                    say!
-                </button>
+                <div className="text-center">
+                    <button type="button" id="say" onClick={this.say}>
+                        say!
+                    </button>
+                </div>
 
                 <ReactTransitionGroup.CSSTransition
                     in={this.state.inst}
@@ -83,7 +78,7 @@ class SayforMain extends React.Component {
                             {this.state.cowsay}
                         </pre>
 
-                        <div className="flrow">
+                        <div id="btns" className="flrow">
                             <div className="flitem">
                                 {this.state.fortune !== ""
                                     && <a id="toja" target="_blank" href={this.toJaUrl()} className="button button-outline sametwbutton">to Ja</a>}
