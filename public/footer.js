@@ -20,8 +20,8 @@ class SayforFooter extends React.Component {
             <div id="wrap_footer" className="flrow">
                 <div className="flitem">
                     <span>&copy;copyright </span>
-                    <a href="https://twitter.com/cranpun">
-                        @cranpun
+                    <a href="https://github.com/cranpun/sayfor">
+                        cranpun/sayfor
                     </a>
                 </div>
                 <div className="flitem">
